@@ -26,10 +26,11 @@ export const useTodoStore = create<TodoState>((set) => ({
       todos: [...state.todos, { id: Date.now(), text, completed: false }],
     })),
 
+  // BUG: there is a bug in this function — find and fix it
   toggleTodo: (id) =>
     set((state) => ({
       todos: state.todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        todo.id !== id ? { ...todo, completed: !todo.completed } : todo
       ),
     })),
 

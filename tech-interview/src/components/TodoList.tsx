@@ -15,7 +15,8 @@ export function TodoList() {
     return true
   })
 
-  const remaining = todos.filter((t) => !t.completed).length
+  // BUG: there is a bug in this function — find and fix it
+  const remaining = todos.filter((t) => t.completed).length
 
   return (
     <section className="todo-list">
